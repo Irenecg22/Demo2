@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Estudios</title>
+</head>
+<body>
+
+<h1>Estudios</h1>
+
+<form th:action="@{/admin/estudios}" method="post">
+    <input type="hidden" name="id" th:value="${estudio?.id}">
+
+    <input type="text" name="titulo"
+           placeholder="Título"
+           th:value="${estudio?.titulo}" required>
+
+    <input type="text" name="institucion"
+           placeholder="Institución"
+           th:value="${estudio?.institucion}" required>
+
+    <textarea name="descripcion"
+              th:text="${estudio?.descripcion}">
+    </textarea>
+
+    <button type="submit">Guardar</button>
+</form>
+
+<hr>
+
+<ul>
+    <li th:each="est : ${estudios}">
+        <span th:text="${est.titulo}"></span> -
+        <span th:text="${est.institucion}"></span>
+
+        <a th:href="@{/admin/estudios/edit/{id}(id=${est.id})}">Editar</a>
+        <a th:href="@{/admin/estudios/delete/{id}(id=${est.id})}">Eliminar</a>
+    </li>
+</ul>
+
+<a href="/admin">Volver</a>
+
+</body>
+</html>

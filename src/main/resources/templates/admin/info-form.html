@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Información Personal</title>
+</head>
+<body>
+
+<h1>Información Personal</h1>
+
+<!-- FORMULARIO CREAR / EDITAR -->
+<form th:action="@{/admin/info}" method="post">
+
+    <!-- ID oculto (para editar) -->
+    <input type="hidden" name="id" th:value="${info?.id}">
+
+    <input type="text"
+           name="nombre"
+           placeholder="Nombre completo"
+           th:value="${info?.nombre}"
+           required>
+
+    <textarea name="descripcion"
+              placeholder="Descripción profesional"
+              th:text="${info?.descripcion}">
+    </textarea>
+
+    <input type="text"
+           name="foto_url"
+           placeholder="URL de la foto"
+           th:value="${info?.foto_url}">
+
+    <input type="email"
+           name="email"
+           placeholder="Email"
+           th:value="${info?.email}">
+
+    <input type="text"
+           name="linkedin"
+           placeholder="LinkedIn"
+           th:value="${info?.linkedin}">
+
+    <input type="text"
+           name="github"
+           placeholder="GitHub"
+           th:value="${info?.github}">
+
+    <button type="submit">Guardar</button>
+</form>
+
+<hr>
+
+<!-- LISTADO -->
+<h2>Listado</h2>
+
+<ul>
+    <li th:each="i : ${info}">
+        <b th:text="${i.nombre}"></b>
+
+        <a th:href="@{/admin/info/edit/{id}(id=${i.id})}">
+            Editar
+        </a>
+
+        <a th:href="@{/admin/info/delete/{id}(id=${i.id})}">
+            Eliminar
+        </a>
+    </li>
+</ul>
+
+<a href="/admin">Volver al panel</a>
+
+</body>
+</html>

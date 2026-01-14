@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Experiencia</title>
+</head>
+<body>
+
+<h1>Experiencia</h1>
+
+<form th:action="@{/admin/experiencia}" method="post">
+    <input type="hidden" name="id" th:value="${experiencia?.id}">
+
+    <input type="text" name="puesto"
+           placeholder="Puesto"
+           th:value="${experiencia?.puesto}" required>
+
+    <input type="text" name="empresa"
+           placeholder="Empresa"
+           th:value="${experiencia?.empresa}" required>
+
+    <textarea name="descripcion"
+              placeholder="Descripción"
+              th:text="${experiencia?.descripcion}">
+    </textarea>
+
+    <button type="submit">Guardar</button>
+</form>
+
+<hr>
+
+<ul>
+    <li th:each="exp : ${experiencias}">
+        <span th:text="${exp.puesto}"></span> -
+        <span th:text="${exp.empresa}"></span>
+
+        <a th:href="@{/admin/experiencia/edit/{id}(id=${exp.id})}">Editar</a>
+        <a th:href="@{/admin/experiencia/delete/{id}(id=${exp.id})}">Eliminar</a>
+    </li>
+</ul>
+
+<a href="/admin">Volver</a>
+
+</body>
+</html>

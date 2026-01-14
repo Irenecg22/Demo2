@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyectos</title>
+</head>
+<body>
+
+<h1>Proyectos</h1>
+
+<form th:action="@{/admin/proyectos}" method="post">
+    <input type="hidden" name="id" th:value="${proyecto?.id}">
+
+    <input type="text" name="nombre"
+           placeholder="Nombre"
+           th:value="${proyecto?.nombre}" required>
+
+    <textarea name="descripcion"
+              th:text="${proyecto?.descripcion}">
+    </textarea>
+
+    <h3>Lenguajes</h3>
+    <div th:each="len : ${lenguajes}">
+        <input type="checkbox"
+               name="lenguajeIds"
+               th:value="${len.id}">
+        <span th:text="${len.nombre}"></span>
+    </div>
+
+    <button type="submit">Guardar</button>
+</form>
+
+<hr>
+
+<ul>
+    <li th:each="pro : ${proyectos}">
+        <span th:text="${pro.nombre}"></span>
+        <a th:href="@{/admin/proyectos/delete/{id}(id=${pro.id})}">Eliminar</a>
+    </li>
+</ul>
+
+<a href="/admin">Volver</a>
+
+</body>
+</html>

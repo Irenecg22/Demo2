@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Portfolio</title>
+</head>
+<body>
+
+<h1 th:text="${info[0].nombre}">Nombre</h1>
+<p th:text="${info[0].descripcion}">Descripción</p>
+
+<hr>
+
+<h2>Experiencia</h2>
+<ul>
+    <li th:each="exp : ${experiencias}">
+        <b th:text="${exp.puesto}"></b> -
+        <span th:text="${exp.empresa}"></span>
+        <p th:text="${exp.descripcion}"></p>
+    </li>
+</ul>
+
+<hr>
+
+<h2>Estudios</h2>
+<ul>
+    <li th:each="est : ${estudios}">
+        <b th:text="${est.titulo}"></b> -
+        <span th:text="${est.institucion}"></span>
+        <p th:text="${est.descripcion}"></p>
+    </li>
+</ul>
+
+<hr>
+
+<h2>Proyectos</h2>
+<ul>
+    <li th:each="pro : ${proyectos}">
+        <b th:text="${pro.nombre}"></b>
+        <p th:text="${pro.descripcion}"></p>
+
+        <span>Lenguajes:</span>
+        <ul>
+            <li th:each="len : ${pro.lenguajes}"
+                th:text="${len.nombre}">
+            </li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>

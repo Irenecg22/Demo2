@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/admin/experiencia")
+@RequestMapping("/admin/proyecto")
 public class ProyectoController {
 
     @Autowired
