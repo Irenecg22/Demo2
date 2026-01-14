@@ -15,7 +15,7 @@ public class EstudiosService {
     @Autowired
     private EstudioRepository estudiosRepository;
 
-    public List<Estudios> getAllExperiencias() {
+    public List<Estudios> getAllEstudios() {
         return estudiosRepository.findAll();
     }
 

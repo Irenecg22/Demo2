@@ -21,7 +21,7 @@ public class HomeController {
     public String home(Model model) {
         model.addAttribute("info", infoService.getAllInfo());
         model.addAttribute("experiencias", experienciaService.getAllExperiencias());
-        model.addAttribute("estudios", estudiosService.getAllExperiencias());
+        model.addAttribute("estudios", estudiosService.getAllEstudios());
         model.addAttribute("proyectos", proyectoService.getAllProyecto());
         return "index";
     }

@@ -32,7 +32,7 @@ public class LenguajeService {
         return lenguajeRepository.save(lenguaje);
     }
 
-    public void deleteExperiencia(Long id) {
+    public void deleteLenguaje(Long id) {
         lenguajeRepository.deleteById(id);
     }
 }
